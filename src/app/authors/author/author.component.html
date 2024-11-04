@@ -1,0 +1,34 @@
+<div *ngIf="!selectedAuthor">
+  <h2>Sorry, can't find the requested author...</h2>
+</div>
+<div *ngIf="selectedAuthor">
+  <h2>Here are details of the Author {{ selectedAuthor.id }}</h2>
+
+  <div class="row">
+    <div class="col-3">First Name:</div>
+    <div class="col-9">{{ selectedAuthor.firstName }}</div>
+  </div>
+  <div class="row">
+    <div class="col-3">Last Name:</div>
+    <div class="col-9">{{ selectedAuthor.lastName }}</div>
+  </div>
+
+  <!-- Books Section -->
+  <div class="row" *ngIf="selectedAuthor.books && selectedAuthor.books.length > 0">
+    <div class="col-12">
+      <h3>Books by {{ selectedAuthor.firstName }} {{ selectedAuthor.lastName }}:</h3>
+      <div *ngFor="let book of selectedAuthor.books">
+        <div class="row">
+          <div class="col-3">Title:</div>
+          <div class="col-9">{{ book.title }}</div>
+        </div>
+        <hr/> <!-- Separator for each book -->
+      </div>
+    </div>
+  </div>
+  <div class="row" *ngIf="selectedAuthor.books && selectedAuthor.books.length === 0">
+    <div class="col-12">
+      <p>This author has no books listed.</p>
+    </div>
+  </div>
+</div>

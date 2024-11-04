@@ -34,4 +34,25 @@ export class BooksService {
   public updateBookAuthors(bookId: number, authorId: number): Observable<any> {
     return this.http.patch(Url + 'books/' + bookId + '/authors/' + authorId, {});
   }
+
+  getAuthor(id: string): Observable<Author> {
+    return this.http.get<Author>(`${Url}authors/${id}`).pipe(
+      map(data => {
+        // Map the books to ensure they are correctly typed
+        if (data.books) {
+          data.books = data.books.map(book => new Book(
+            book.id,
+            book.category,
+            book.title,
+            book.cost,
+            book.authors,
+            book.year,
+            book.description
+          ));
+        }
+        return data;
+      })
+    );
+  }
+
 }
