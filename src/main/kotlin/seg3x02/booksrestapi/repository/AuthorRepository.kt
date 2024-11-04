@@ -7,4 +7,6 @@ import seg3x02.booksrestapi.entities.Author
 interface AuthorRepository: CrudRepository<Author, Long> {
     @Query(value="select aut from Author aut where aut.firstName = :firstName and aut.lastName = :lastName")
     fun findAuthorsByName(firstName: String, lastName: String): List<Author>
+    @Query(value="select aut from Author aut where aut.id = :id")
+    fun findAuthorById(id: Long): Author?
 }
