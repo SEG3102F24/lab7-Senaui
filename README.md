@@ -4,3 +4,6 @@
 Access SpringBoot RESTFul API - in branch *server* 
 
 Access Angular Client Application - in branch *client*
+
+Name: Shun Hei Yiu
+StudentID: 300247812
